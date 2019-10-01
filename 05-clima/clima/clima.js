@@ -2,10 +2,10 @@ const axios = require('axios')
 
 const getClima = async (lugar) => {
     try{
-        const res = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lugar.lat}&lon=${lugar.lon}&appid=b8771e6beb3844cc3f407f83163b19eb`)
+        const res = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lugar.lat}&lon=${lugar.lon}&appid=b8771e6beb3844cc3f407f83163b19eb&units=metric`)
     
         if(res.status == 200)
-            return res.data
+            return res.data.main.temp
         else{
             return new Error(`${res.status} - ${res.statusText}`)
         }
